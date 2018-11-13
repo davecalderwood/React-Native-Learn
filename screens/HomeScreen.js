@@ -1,5 +1,6 @@
 import React from 'react';
 import Style from './Style'
+import SwitchExample from './SwitchExample'
 import {
   Image,
   Platform,
@@ -9,10 +10,15 @@ import {
   TouchableOpacity,
   View,
   Button,
-  AppRegistry,
 } from 'react-native';
 
 export default class HomeScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+       switch1Value: false,
+    }
+ }
   static navigationOptions = {
     header: null,
   };
@@ -20,14 +26,19 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
         <View style={{flex: 1}}>
-            <View style={{flex: 1, backgroundColor: '#193441'}}>
-                <Text style={styles.header}>Simple Header</Text>
+            <View style={{flex: 2, backgroundColor: 'darkblue'}}>
+                <Text style={styles.header}>Stars App</Text>
             </View>
 
-            <View style={{flex: 8, backgroundColor: '#3E606F'}}>
-                <Text style={styles.content}>Blah Blah Blah</Text>
+            <View style={{flex: 8, backgroundColor: 'lightgray'}}>
+                <Image source={require('./Utah_Stars_ABA_logo.png')} style={{width: 100 + '%'}} />
+                <View>
+                  <SwitchExample
+                    toggleSwitch1 = {this.toggleSwitch1}
+                    switch1Value = {this.state.switch1Value}/>
+                </View>
             </View>
-            <View style={{flex: 1, backgroundColor: '#193441'}}></View>
+            <View style={{flex: 1, backgroundColor: 'red'}}></View>
             
             <View style={Style.rootContainer}>
                 <View style={Style.displayContainer}></View>
@@ -43,10 +54,16 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingHorizontal: 10,
     paddingVertical: 30,
-    fontSize: 40,
+    fontSize: 80,
+    fontWeight: 'bold',
+    fontStyle: 'italic',
     fontFamily: 'Cochin',
+    color: 'red',
   },
   content: {
+    paddingVertical: 30,
     textAlign: 'center',
+    fontSize: 30,
+    color: 'lightgray',
   },
 })
