@@ -1,6 +1,8 @@
 import React from 'react';
 import Style from './Style'
-import SwitchExample from './SwitchExample'
+import SwitchExample from '../components/SwitchExample'
+import Tabs from '../components/Tabs'
+import Table from '../components/Table'
 import {
   Image,
   Platform,
@@ -26,20 +28,22 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
         <View style={{flex: 1}}>
-            <View style={{flex: 2, backgroundColor: 'darkblue'}}>
-                <Text style={styles.header}>Stars App</Text>
-            </View>
-
+              <View style={{flex: .75, backgroundColor: 'darkblue'}}></View>
+            <Image style={styles.logo} source={require('./Utah_Stars_ABA_logo.png')} style={{width: 100 + '%'}} />
             <View style={{flex: 8, backgroundColor: 'lightgray'}}>
-                <Image source={require('./Utah_Stars_ABA_logo.png')} style={{width: 100 + '%'}} />
+                    <Text style={styles.tabs}>My Tickets</Text>
+                    <Text style={styles.tabs}>Buy Tickets</Text>
+                    <Text style={styles.tabs}>Upgrade Seat</Text>
+                    <Text style={styles.tabs}>Digital Wallet</Text>
+                    <Text style={styles.tabs}>Stars Gear</Text>
+                    <Text style={styles.tabs}>Explore Arena</Text>
                 <View>
-                  <SwitchExample
+                  {/* <SwitchExample
                     toggleSwitch1 = {this.toggleSwitch1}
-                    switch1Value = {this.state.switch1Value}/>
+                    switch1Value = {this.state.switch1Value}/> */}
                 </View>
             </View>
             <View style={{flex: 1, backgroundColor: 'red'}}></View>
-            
             <View style={Style.rootContainer}>
                 <View style={Style.displayContainer}></View>
                 <View style={Style.inputContainer}></View>
@@ -65,5 +69,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 30,
     color: 'lightgray',
+  },
+  tabs: {
+    fontSize: 50,
+    justifyContent: 'space-around',
   },
 })
